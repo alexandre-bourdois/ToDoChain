@@ -6,11 +6,23 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  background: #000000; 
-  background: -webkit-linear-gradient(to right, #434343, #000000);
-  background: linear-gradient(to right, #434343, #100001);
 }
+
+body {
+  background-color: #d4d4d4; 
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #536976, #292e49); 
+  z-index: -1; 
+} 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

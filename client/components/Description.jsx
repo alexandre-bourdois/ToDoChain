@@ -19,19 +19,19 @@ const Description = () => {
   return (
         <div className="flex-1 flex flex-col lg:flex-row justify-start items-center">
                 <StepCard
-                color = "bg-[#2952e3]"
+                color = "bg-[#2F7DC8]"
                 title = "Step 1: Connect your Wallet"
                 icon={<FaWallet fontSize={40} className="text-white"/>}
                 subtitle="DESCRIPTION"
                 />
                  <StepCard
-                color = "bg-[#8945F8]"
+                color = "bg-[#36A65F]"
                 title = "Step 2: Add Tasks"
                 icon={<FaTasks fontSize={40} className="text-white"/>}
                 subtitle="DESCRIPTION"
                 />
                 <StepCard
-                color = "bg-[#F84550]"
+                color = "bg-[#EFB227]"
                 title = "Step 3: Manage your Tasks"
                 icon={<MdManageHistory fontSize={40} className="text-white"/>}
                 subtitle="DESCRIPTION"
