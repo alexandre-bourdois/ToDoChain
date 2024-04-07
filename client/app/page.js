@@ -1,8 +1,8 @@
 "use client"
 
-import ConnectWalletButton from "@/components/NavBar";
+import ConnectWalletButton from "@/components/ConnectWalletButton";
 import Description from "@/components/Description";
-import PageBottom from "@/components/PageBottom";
+import Footer from "@/components/PageBottom";
 import ToDoList from "@/components/ToDoList";
 import { ethers } from "ethers";
 
@@ -18,9 +18,12 @@ export default function Home() {
         let chainId = await ethereum.request({method: 'eth_chainId'})
         console.log('connected to chain:',chainId)
 
-        const ethereumId = '0xaa36a7'
-        if(chainId !== ethereumId) {
-          alert('You are not connected to Ethereum Mainet')
+        const ethereumId = '0xaa36a7' //Currently Seppolia for test
+        if (chainId !== ethereumId) {
+          await ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{chainId: ethereumId}]
+          })
         }
     } catch (error) {
       console.log(error)
@@ -35,7 +38,7 @@ export default function Home() {
       <Description/>
       {/* If connected display */}
         <ToDoList/>
-      <PageBottom />
+      <Footer/>
     </div>
   );
 }

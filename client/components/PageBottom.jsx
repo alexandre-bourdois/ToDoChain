@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PageBottom = () => {
+const Footer = () => {
   return (
     <footer className="bg-black bg-opacity-50 text-white py-4">
       <div className="container mx-auto text-center">
@@ -12,4 +12,4 @@ const PageBottom = () => {
   );
 };
 
-export default PageBottom;
+export default Footer;
