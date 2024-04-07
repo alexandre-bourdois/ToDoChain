@@ -10,13 +10,13 @@ const ConnectWalletButton = ({ connectWallet, connected, currentAccount, disconn
 
   return (
     <>
-      <div className='w-[full] flex px-5 py-8 justify-between'>
+      <div className='w-[full] flex px-5 py-8 justify-between flex-1'>
         {connected && currentAccount && (
           <>
           <div className="flex items-center bg-violet-600 text-white p-2">
           <p className="text-white">{shortenAddress(currentAccount)}</p>
           </div>
-          <div className="flex-1 flex md:place-content-end place-content-center p-2 items-center">
+          <div className="flex-1 flex place-content-center  p-2 items-center">
               <h1 className="mb-4 text-3xl font-bold text-white">
                 <span className="animate-pulse text-blue-500">T </span>
                 <span className="animate-pulse text-green-500">D </span>
@@ -26,7 +26,7 @@ const ConnectWalletButton = ({ connectWallet, connected, currentAccount, disconn
           </>
         )}
 
-        <div className={`flex-1 flex ${connected ? 'place-content-end' : 'place-content-center  md:place-content-end'}`}>
+        <div className={` flex ${connected ? 'place-content-end' : 'flex-1 place-content-center  md:place-content-end'}`}>
           {!connected ? (
             <button
               className="h-[4rem] text-2xl bg-blue-500 hover:bg-blue-700 text-white font-bold px-8 rounded-lg transition duration-400 ease-linear"
