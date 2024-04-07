@@ -73,30 +73,26 @@ export default function Home() {
         const signer = await provider.getSigner();
         console.log("Account:", await signer.getAddress());
       }
-      
     } catch (error) {
       console.log(error)
     }
-
   }
   return (
     <div className="flex flex-col min-h-screen">
+      <div className="flex-1">
 
-      {/* Afficher le bouton de connexion / déconnexion */}
-      <ConnectWalletButton 
-        connectWallet={connectWallet} 
-        connected={connected}
-        currentAccount={currentAccount}
-        disconnectWallet={disconnectWallet}
-      />
+        <ConnectWalletButton 
+          connectWallet={connectWallet} 
+          connected={connected}
+          currentAccount={currentAccount}
+          disconnectWallet={disconnectWallet}
+        />
 
-      {/* Afficher la description si l'utilisateur n'est pas connecté */}
-      {!connected && <Description />}
+        {!connected && <Description />}
+        {connected && <ToDoList />}
 
-      {/* Afficher la liste des tâches si l'utilisateur est connecté */}
-      {connected && <ToDoList />}
+      </div>
 
-      {/* Toujours afficher le pied de page */}
       <Footer />
     </div>
   );

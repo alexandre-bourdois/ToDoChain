@@ -5,7 +5,7 @@ import { MdManageHistory } from "react-icons/md";
 
 const StepCard = ({ color, title, icon, subtitle }) => (
     <div className="flex flex-col justify-start items-center white-glassmorphism p-10 m-2 cursor-pointer hover:shadow-xl w-full">
-      <div className={`w-20 h-20 rounded-full flex justify-center items-center bg-[${color}]`}>
+      <div className={`w-20 h-20 rounded-full flex justify-center items-center ${color}`}>
         {icon}
       </div>
       <div className="md:ml-0 ml-4 flex flex-col flex-1 p-2 items-center">
@@ -34,19 +34,19 @@ const Description = () => {
 
       <div className="flex-1 flex flex-col lg:flex-row justify-start items-center">
               <StepCard
-              color = "#2F7DC8"
+              color = "bg-[#2F7DC8]"
               title = "Step 1: Connect your Wallet"
               icon={<FaWallet fontSize={40} className="text-white"/>}
               subtitle=" Connect your MetaMask wallet to the Ethereum blockchain to access ToDoChain."
               />
                 <StepCard
-              color = "#36A65F"
+              color = "bg-[#36A65F]"
               title = "Step 2: Add Tasks"
               icon={<FaTasks fontSize={40} className="text-white"/>}
               subtitle="Safely and confidentially add your tasks to the Ethereum blockchain."
               />
               <StepCard
-              color = "#EFB227"
+              color = "bg-[#EFB227]"
               title = "Step 3: Manage your Tasks"
               icon={<MdManageHistory fontSize={40} className="text-white"/>}
               subtitle="Browse your previous tasks or delete them, securely manage your tasks with confidence."
