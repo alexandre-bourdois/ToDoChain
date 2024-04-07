@@ -5,9 +5,11 @@ import Description from "@/components/Description";
 import Footer from "@/components/PageBottom";
 import ToDoList from "@/components/ToDoList";
 import { ethers } from "ethers";
+import { useState } from "react";
 
 export default function Home() {
-
+  const [connected,setConnected] = useState(false)
+  const [currentAccount, setCurrentAccount]= useState(false)
   const connectWallet = async () => {
     try {
         const {ethereum} = window
@@ -25,6 +27,12 @@ export default function Home() {
             params: [{chainId: ethereumId}]
           })
         }
+        const accounts = await ethereum.request({method: 'eth_requestAccounts'})
+        
+        console.log('Found accound', accounts[0])
+        setConnected(true)
+        setCurrentAccount(accounts[0])
+
     } catch (error) {
       console.log(error)
     }

@@ -24,7 +24,13 @@ const Description = () => {
       <span className="animate-pulse text-yellow-500">Chain </span>
       </h1>
 
-      <p className="mb-8 text-2xl text-white text-center animate-pulse transition-colors duration-1000 ease-in-out">A decentralized to-do list on Ethereum</p>
+      <p className="mb-8 text-2xl text-white text-center animate-pulse transition-colors duration-1000 ease-in-out">
+        A decentralized to-do list on Ethereum
+      </p>
+      
+      <div className="flex justify-center">
+        <hr className="my-8 w-1/4 border-b-2 border-gray-300 rounded-full" />
+      </div>
 
       <div className="flex-1 flex flex-col lg:flex-row justify-start items-center">
               <StepCard
