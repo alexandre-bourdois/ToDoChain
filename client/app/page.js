@@ -8,8 +8,11 @@ import { ethers } from "ethers";
 import { useState } from "react";
 
 export default function Home() {
+  
   const [connected,setConnected] = useState(false)
   const [currentAccount, setCurrentAccount]= useState(false)
+  const [input, setInput] = useState(false)
+
   const connectWallet = async () => {
     try {
         const {ethereum} = window
@@ -36,17 +39,65 @@ export default function Home() {
     } catch (error) {
       console.log(error)
     }
-  }
+  };
 
+  const disconnectWallet = async () => {
+    try {
+      const { ethereum } = window;
+      if (!ethereum) {
+        console.log('Metamask not detected');
+        return;
+      }
+    
+      setConnected(false);
+      setCurrentAccount(null);
+  
+      console.log('Wallet disconnected');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addTask = async e => {
+    e.preventDefault()
+
+    let task = {
+      taskText: input,
+      isDeleted: false
+    }
+
+    try {
+      const {ethereum} = window
+      if (ethereum) {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        console.log("Account:", await signer.getAddress());
+      }
+      
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
   return (
     <div className="flex flex-col min-h-screen">
 
-      {/* If not connected display */}
-      <ConnectWalletButton connectWallet={connectWallet}/>
-      <Description/>
-      {/* If connected display */}
-        <ToDoList/>
-      <Footer/>
+      {/* Afficher le bouton de connexion / déconnexion */}
+      <ConnectWalletButton 
+        connectWallet={connectWallet} 
+        connected={connected}
+        currentAccount={currentAccount}
+        disconnectWallet={disconnectWallet}
+      />
+
+      {/* Afficher la description si l'utilisateur n'est pas connecté */}
+      {!connected && <Description />}
+
+      {/* Afficher la liste des tâches si l'utilisateur est connecté */}
+      {connected && <ToDoList />}
+
+      {/* Toujours afficher le pied de page */}
+      <Footer />
     </div>
   );
 }
