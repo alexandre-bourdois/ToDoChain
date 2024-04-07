@@ -1,0 +1,11 @@
+{
+  "name": "ToDoChain",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "truffle": "^5.11.5"
+  }
+}
