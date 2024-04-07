@@ -8,8 +8,20 @@ contract TaskContract {
     event GetTask(uint taskId);
 
     struct Task {
-        uint Id;
-        string Text;
-        bool IsDeleted;
+        uint id;
+        string text;
+        bool isDeleted;
+        uint timestamp;
+    }
+
+    Task[] private tasks;
+    mapping(uint256 => address) taskToOwner;
+
+    function addTask(string memory Text, bool IsDeleted) external {
+        uint taskId = tasks.length;
+        uint timestamp = block.timestamp;
+        tasks.push(Task(taskId, Text, IsDeleted, timestamp)); // Ajoutez le timestamp dans votre struct Task
+        taskToOwner[taskId] = msg.sender;
+        emit AddTask(msg.sender, taskId);
     }
 }

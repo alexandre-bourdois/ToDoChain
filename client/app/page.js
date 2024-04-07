@@ -2,7 +2,7 @@
 
 import ConnectWalletButton from "@/components/ConnectWalletButton";
 import Description from "@/components/Description";
-import Footer from "@/components/PageBottom";
+import Footer from "@/components/Footer";
 import ToDoList from "@/components/ToDoList";
 import { ethers } from "ethers";
 import { useState } from "react";
