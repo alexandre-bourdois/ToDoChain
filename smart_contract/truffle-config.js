@@ -1,7 +1,6 @@
-const HDWalletProvider = require("@truffle/hdwallet-provider");
+require('dotenv').config();
 
-const mnemonic = '';
-const nodeEndpoint = 'http://localhost:24012/rpc';
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 module.exports = {
   compilers: {
@@ -13,7 +12,7 @@ module.exports = {
     development: {
     },
     sepolia: {
-      provider: () => new HDWalletProvider(mnemonic, nodeEndpoint),
+      provider: () => new HDWalletProvider(process.env.MNEMONIC, process.env.NODE_ENDPOINT),
       network_id: 11155111,
       gas: 4000000
     }
