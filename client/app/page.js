@@ -4,9 +4,10 @@ import ConnectWalletButton from "@/components/ConnectWalletButton";
 import Description from "@/components/Description";
 import Footer from "@/components/Footer";
 import ToDoList from "@/components/ToDoList";
-import { ethers } from "ethers";
+import { Contract, ethers } from "ethers";
 import { useState } from "react";
 
+import TaskContract from "../contract/TaskContract.json"
 export default function Home() {
   
   const [connected,setConnected] = useState(false)
