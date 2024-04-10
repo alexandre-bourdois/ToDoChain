@@ -13,12 +13,15 @@ export default function Home() {
   const [connected,setConnected] = useState(false)
   const [currentAccount, setCurrentAccount]= useState(false)
   const [input, setInput] = useState(false)
+  const [tasks, setTasks] = useState(false)
 
   const connectWallet = async () => {
     try {
         const {ethereum} = window
         if(!ethereum){
           console.log('Metamask not detected')
+          alert('MetaMask not detected');
+
           return
         }
         let chainId = await ethereum.request({method: 'eth_chainId'})
@@ -72,7 +75,24 @@ export default function Home() {
       if (ethereum) {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
+        const Contract = new ethers.Contract(
+          TaskContract.network,
+          TaskContract.abi,
+          signer          
+        )
         console.log("Account:", await signer.getAddress());
+
+        Contract.addTask(task.taskText, task.isDeleted)
+        .then(res =>{
+          setTasks([...tasks,task])
+          console.log('Added task')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+
+      } else{
+        console.log('ethereum object does not exist')
       }
     } catch (error) {
       console.log(error)
@@ -90,7 +110,7 @@ export default function Home() {
         />
 
         {!connected && <Description />}
-        {connected && <ToDoList />}
+        {connected && <ToDoList input={setInput} addTask={addTask} />}
 
       </div>
 

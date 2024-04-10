@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaPlusCircle } from "react-icons/fa";
 
-const ToDoList = () => {
+const ToDoList = ({input, addTask}) => {
 
   return (
     <div className='flex items-center justify-center'style={{ height: '50vh' }}>
@@ -13,8 +13,11 @@ const ToDoList = () => {
         <input
             className='rounded-[10px] w-full p-4 border-none outline-none text-[#36A65F]  bg-[#1d1d2b] '
             placeholder='Add a task for today...'
+            value={input}
+            onChange={e=>setInput(e.target.value)}
         />
           <FaPlusCircle
+            onClick={addTask}
             className='text-[#EFB227] text-[50px] cursor-pointer ml-[20px] mb-[10px]'
           />
         </form>
