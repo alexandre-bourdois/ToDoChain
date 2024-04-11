@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaPlusCircle } from "react-icons/fa";
-
-const ToDoList = ({input, addTask}) => {
+import Tasks from './Tasks';
+const ToDoList = ({tasks,input,setInput, addTask}) => {
 
   return (
     <div className='flex items-center justify-center'style={{ height: '50vh' }}>
@@ -21,7 +21,15 @@ const ToDoList = ({input, addTask}) => {
             className='text-[#EFB227] text-[50px] cursor-pointer ml-[20px] mb-[10px]'
           />
         </form>
-      </div>
+        <ul>
+          {tasks.map(item => (
+            <Tasks
+              key={item.id}
+              taskText={item.taskText}
+            />
+          ))}
+        </ul>
+        </div>
     </div>
   );
 };
