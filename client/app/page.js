@@ -120,7 +120,7 @@ export default function Home() {
           TaskContract.abi,
           signer          
         )
-        let allTasks = await TaskContract.getMyTasks()
+        let allTasks = await TaskContract.getTasks()
         setTasks(allTasks)
       } else {
         console.log('Ethereum object does not exist')
