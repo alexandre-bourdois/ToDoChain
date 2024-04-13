@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaPlusCircle } from "react-icons/fa";
 import Task from './Tasks';
 
-const ToDoList = ({ tasks, input, setInput, addTask, deleteTask }) => {
+const ToDoList = ({ tasks, input, setInput, addTask, deleteTask, changeTask }) => {
 
   return (
     <div className='flex items-center justify-center pb-10'>
@@ -27,9 +27,11 @@ const ToDoList = ({ tasks, input, setInput, addTask, deleteTask }) => {
           {tasks.map(item => (
             <Task
               key={item.id}
+              taskId={item.id}
               taskTime={item.timestamp ? parseInt(item.timestamp.toString()) : null}
               taskText={item.text}
               deleteTask={deleteTask(item.id)}
+              changeTask={changeTask}
             />
           ))}
         </ul>

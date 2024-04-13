@@ -165,7 +165,32 @@ export default function Home() {
 
   }
 
-
+  const changeTask =  async (taskId, newText ) => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+  
+        const Contract = new ethers.Contract(
+          contractAddress,
+          TaskContract.abi,
+          signer
+        );
+  
+        await Contract.changeTask(taskId, newText);
+        console.log('Task updated');
+  
+        let tasksArray = await Contract.getTasks();
+        setTasks([...tasksArray].reverse());
+      } else {
+        console.log('Ethereum object does not exist');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex-1">
@@ -178,7 +203,7 @@ export default function Home() {
         />
 
         {!connected && <Description />}
-        {connected && <ToDoList tasks={tasks} input={input} setInput={setInput} addTask={addTask} deleteTask={deleteTask} />}
+        {connected && <ToDoList tasks={tasks} input={input} setInput={setInput} addTask={addTask} deleteTask={deleteTask} changeTask={changeTask}/>}
 
       </div>
 
