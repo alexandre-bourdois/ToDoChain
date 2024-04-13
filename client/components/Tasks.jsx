@@ -1,6 +1,6 @@
 import { FaPencilAlt, FaRegTrashAlt } from "react-icons/fa";
 
-const Task = ({ taskTime, taskText }) => {
+const Task = ({ taskTime, taskText, deleteTask }) => {
   const formattedDate = new Date(taskTime * 1000).toLocaleString();
 
   return (
@@ -12,7 +12,9 @@ const Task = ({ taskTime, taskText }) => {
             <span>{taskText}</span>
             <span className='text-xs text-[#6c757d]'>{formattedDate}</span>
           </div>
-          <FaRegTrashAlt className='text-3xl cursor-pointer ml-auto' />
+          <FaRegTrashAlt 
+          onClick={deleteTask}
+          className='text-3xl cursor-pointer ml-auto' />
         </div>
       </div>
     </div>

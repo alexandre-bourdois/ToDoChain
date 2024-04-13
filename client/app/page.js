@@ -24,8 +24,7 @@ export default function Home() {
   }, [tasks]); 
 
   useEffect(() => {
-    connectWallet()
-    getAllTasks()
+    connectWallet();
   },[])
 
   const connectWallet = async () => {
@@ -53,6 +52,7 @@ export default function Home() {
         setConnected(true)
         setCurrentAccount(accounts[0])
 
+        getAllTasks();
     } catch (error) {
       console.log(error)
     }
@@ -68,6 +68,7 @@ export default function Home() {
     
       setConnected(false);
       setCurrentAccount(null);
+      setTasks([]);
   
       console.log('Wallet disconnected');
     } catch (error) {
@@ -138,6 +139,33 @@ export default function Home() {
     }
   } 
 
+  const deleteTask = taskId => async()  => {
+    try {
+      const {ethereum} = window
+      if (ethereum) {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+
+        const Contract = new ethers.Contract(
+          contractAddress,
+          TaskContract.abi,
+          signer          
+        )
+      await Contract.deleteTask(taskId);
+      console.log('Deleted task');
+
+      let tasksArray = await Contract.getTasks();
+      setTasks([...tasksArray].reverse());
+    } else {
+        console.log('Ethereum object does not exist')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex-1">
@@ -150,7 +178,7 @@ export default function Home() {
         />
 
         {!connected && <Description />}
-        {connected && <ToDoList tasks={tasks} input={input} setInput={setInput} addTask={addTask} />}
+        {connected && <ToDoList tasks={tasks} input={input} setInput={setInput} addTask={addTask} deleteTask={deleteTask} />}
 
       </div>
 
