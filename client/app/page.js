@@ -16,11 +16,18 @@ export default function Home() {
   const [tasks, setTasks] = useState([])
 
   const contractAddress = "0xb30102B55D83B35Bea66AA77B2D20541978Cc0B9"
+  
+  useEffect(() => {
+    if (connected) {
+      getAllTasks();
+    }
+  }, [tasks]); 
 
-    useEffect(() => {
-      connectWallet()
-      getAllTasks()
-    },[])
+  useEffect(() => {
+    connectWallet()
+    getAllTasks()
+  },[])
+
   const connectWallet = async () => {
     try {
         const {ethereum} = window
@@ -94,12 +101,12 @@ export default function Home() {
         Contract.addTask(task.taskText)
         .then(res => {
           setTasks([...tasks, task])
+          setInput('');
           console.log('Added task')
         })
         .catch(err => {
           console.log(err)
         })
-
       } else{
         console.log('ethereum object does not exist')
       }

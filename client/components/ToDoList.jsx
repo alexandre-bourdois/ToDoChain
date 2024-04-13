@@ -5,7 +5,7 @@ import Task from './Tasks';
 const ToDoList = ({ tasks, input, setInput, addTask }) => {
 
   return (
-    <div className='flex items-center justify-center'>
+    <div className='flex items-center justify-center pb-10'>
       <div className='w-[70%] bg-[#22223B] py-4 px-9 rounded-[20px]'>
 
         <h2 className='text-4xl font-bold text-[#2F7DC8] pb-8'>To Do Chain</h2>
