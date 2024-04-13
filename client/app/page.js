@@ -19,7 +19,7 @@ export default function Home() {
 
     useEffect(() => {
       connectWallet()
-      getAllTasks
+      getAllTasks()
     },[])
   const connectWallet = async () => {
     try {
@@ -120,9 +120,10 @@ export default function Home() {
           TaskContract.abi,
           signer          
         )
-        let allTasks = await TaskContract.getTasks()
-        setTasks(allTasks)
-      } else {
+      let tasksArray = await Contract.getTasks();
+
+      setTasks([...tasksArray].reverse());
+    } else {
         console.log('Ethereum object does not exist')
       }
     } catch (error) {
