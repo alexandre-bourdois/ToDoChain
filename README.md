@@ -1,6 +1,6 @@
 # ToDoChain⛓️
 
-ToDoChain is a decentralized to-do list application built on Ethereum blockchain, empowering users to manage their tasks securely while leveraging the benefits of blockchain technology. With MetaMask integration, users can seamlessly interact with the Ethereum network, ensuring a smooth and secure task management experience. Here is the link of the web site : todochain.alexandrebourdois.com
+ToDoChain is a decentralized to-do list application built on Ethereum blockchain, empowering users to manage their tasks securely while leveraging the benefits of blockchain technology. With MetaMask integration, users can seamlessly interact with the Ethereum network, ensuring a smooth and secure task management experience. Here is the link of the web site :  <a href="https://todochain.alexandrebourdois.com/">https://todochain.alexandrebourdois.com</a>
 
 <p align="center">
 	<img src="misc/thumbnail.png" width="750">
