@@ -2,12 +2,11 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+    "scripts": {
+      "dev": "node server.js",
+      "build": "next build",
+      "start": "NODE_ENV=production node server.js"
+    },
   "dependencies": {
     "ethers": "^6.11.1",
     "next": "14.1.4",
