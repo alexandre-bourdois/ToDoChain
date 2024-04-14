@@ -2,6 +2,10 @@
 
 ToDoChain is a decentralized to-do list application built on Ethereum blockchain, empowering users to manage their tasks securely while leveraging the benefits of blockchain technology. With MetaMask integration, users can seamlessly interact with the Ethereum network, ensuring a smooth and secure task management experience.
 
+<p align="center">
+	<img src="misc/thumbnail.png" width="750">
+</p>
+
 ## Features
 
 - **Decentralized Task Management:** Utilize the power of blockchain to securely manage your tasks without relying on a centralized authority.
